@@ -1,0 +1,23 @@
+name: CI Pipeline
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v2
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Compilar proyecto
+        run: npm run build
+
+      - name: Ejecutar pruebas
+        run: npm test
+
+      - name: Desplegar aplicación
+        run: npm run deploy
+
